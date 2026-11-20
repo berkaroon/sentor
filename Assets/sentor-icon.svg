@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <linearGradient id="bgCream" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FAF7F2"/>
+      <stop offset="100%" stop-color="#F2EAE0"/>
+    </linearGradient>
+    <linearGradient id="sunDisc" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F6DFD0"/>
+      <stop offset="55%" stop-color="#EAE3F0"/>
+      <stop offset="100%" stop-color="#E3ECE0"/>
+    </linearGradient>
+    <linearGradient id="centaurFill" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3B3129"/>
+      <stop offset="100%" stop-color="#332B24"/>
+    </linearGradient>
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="16" stdDeviation="20" flood-color="#332B24" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <rect x="64" y="64" width="896" height="896" rx="200" ry="200" fill="url(#bgCream)" stroke="#E3D7C7" stroke-width="8"/>
+  <circle cx="512" cy="512" r="330" fill="url(#sunDisc)" opacity="0.78"/>
+  <circle cx="512" cy="512" r="278" fill="#FAF7F2" opacity="0.72"/>
+
+  <g transform="translate(112, 112) scale(1.56)" filter="url(#softShadow)">
+    <g fill="url(#centaurFill)">
+      <path d="M 124 278 C 96 276, 76 294, 72 324 C 84 308, 102 302, 118 308 C 110 328, 102 356, 94 388 C 92 396, 100 402, 108 398 C 120 388, 132 356, 144 334 L 156 388 C 158 396, 168 398, 174 392 C 178 386, 176 352, 176 326 C 206 322, 238 320, 266 324 L 284 378 C 288 390, 298 392, 304 384 C 308 378, 302 346, 296 318 L 348 352 C 356 358, 366 352, 364 342 C 362 332, 326 302, 306 286 C 314 268, 308 244, 286 236 C 284 214, 282 190, 284 168 L 332 168 C 340 168, 344 160, 340 152 C 336 146, 326 146, 316 146 L 282 146 C 278 134, 268 124, 256 122 C 262 114, 264 102, 258 92 C 250 80, 234 78, 224 88 C 216 96, 216 110, 224 120 C 212 128, 206 142, 206 158 L 182 172 C 174 176, 174 186, 182 190 L 222 184 C 226 206, 224 228, 214 244 C 182 246, 148 256, 124 278 Z"/>
+      <path d="M 224 92 C 208 86, 192 94, 184 108 C 196 106, 208 108, 218 114 Z"/>
+    </g>
+
+    <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M 328 98 C 368 124, 372 188, 328 218" stroke="#332B24" stroke-width="10"/>
+      <line x1="328" y1="98" x2="296" y2="158" stroke="#76695D" stroke-width="3.5"/>
+      <line x1="296" y1="158" x2="328" y2="218" stroke="#76695D" stroke-width="3.5"/>
+      <line x1="292" y1="158" x2="404" y2="158" stroke="#C87D5B" stroke-width="7"/>
+      <polygon points="416,158 394,146 398,158 394,170" fill="#C87D5B"/>
+    </g>
+
+    <g stroke="#A8BF9F" stroke-width="6" stroke-linecap="round" opacity="0.9">
+      <line x1="88" y1="242" x2="140" y2="242"/>
+      <line x1="68" y1="262" x2="112" y2="262"/>
+    </g>
+  </g>
+</svg>
