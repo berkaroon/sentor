@@ -41,7 +41,7 @@
 - **100% Byte-for-Byte Verification:** Verifies every byte of transferred files from start to finish (not just file size or header/tail blocks) with automatic repair on mismatch.
 - **Overwrite Policies:** `Overwrite`, `Ask me` (Windows-style per-file/batch conflict comparison dialog with a *Keep newer* option), and `Never`.
 - **Fast Directory Comparison (`getattrlistbulk`):** Parallel directory indexing powered by macOS `getattrlistbulk`, with clickable `same`, `time diff`, and `diff` filter badges.
-- **Queue, History, Favorites & Mini Notch HUD:** Sequential transfer queue, operation history, favorite folders, floating Mini HUD, Light/Dark themes, and English/Turkish UI.
+- **Queue, History, Favorites & Mini Notch HUD:** Sequential transfer queue, operation history, favorite folders, floating Mini HUD, Light/Dark themes, and 12 languages (en,tr,it,es,fr,de,pt,ja,zh,ko,ru)
 - **Data Integrity & Security Protections:**
   - Blocks transfers/syncs when the destination is a parent or ancestor directory of the source.
   - Propagates permission/read errors on unreadable source subdirectories instead of treating them as empty and deleting destination backups.
