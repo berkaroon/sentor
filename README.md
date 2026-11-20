@@ -1,56 +1,56 @@
 # Sentor
 
-> Bu proje https://github.com/ProxySeer/FastCommander-Releases baz alınarak üretilmiştir.
+> This project is based on https://github.com/ProxySeer/FastCommander-Releases.
 
-**Sentor**, macOS 13 (Ventura) ve üzeri sistemler için SwiftUI ve düşük seviyeli POSIX/Darwin dosya sistemi API'leri ile geliştirilmiş sade, hızlı ve veri bütünlüğü odaklı bir dosya aktarım, eşitleme ve karşılaştırma uygulamasıdır.
+**Sentor** is a clean, fast, data-integrity-focused macOS file transfer, mirror sync, and directory comparison utility built with SwiftUI and low-level POSIX/Darwin filesystem APIs for macOS 13 (Ventura) and later.
 
-## Özellikler
+## Features
 
-- **Copy, Move, Mirror (Sync), Delete ve Compare (`Karşılaştır`):** Kopyalama, taşıma, ayna eşitleme, güvenli silme (`Fast Unlink`, `Zero-Fill`, `DoD 3-Pass`) ve iki klasör/disk arası hızlı karşılaştırma modları.
-- **Yüksek Performanslı POSIX Motoru:** Çoklu iş parçacıklı paralel işçi havuzu, aynı APFS birimi içinde `clonefile` (Copy-on-Write) desteği, büyük dosyalarda Direct I/O (`F_NOCACHE`) ve hizalı bellek tamponları.
-- **%100 Bayt Düzeyinde Doğrulama:** Aktarım sonrasında dosya boyutu ve baş/son bloklarla sınırlı kalmayıp dosyanın tamamını baştan sona bayt bayt doğrulama ve bozulma tespitinde otomatik onarım.
-- **Üzerine Yazma Politikaları:** `Overwrite` (üzerine yaz), `Ask me` (Windows tarzı tekil/toplu çakışma karşılaştırma ekranı ve günceli koruma seçeneğiyle bana sor) ve `Never` (asla).
-- **Hızlı Klasör Karşılaştırma (`getattrlistbulk`):** macOS `getattrlistbulk` tabanlı paralel indeksleme ile iki klasörü veya diski hızlıca tarar; `same`, `time diff` ve `diff` etiketleriyle filtreleme sunar.
-- **Kuyruk, Geçmiş, Favoriler ve Mini Notch HUD:** Sıralı aktarım kuyruğu, işlem geçmişi, favori klasörler, ekran üstü Mini HUD ve açık/koyu tema ile Türkçe/İngilizce arayüz desteği.
-- **Veri Güvenliği ve Bütünlük Korumaları:**
-  - Eşitleme/kopyalama/taşıma sırasında hedefin kaynağın üst/ata klasörü olmasını engelleme.
-  - Kaynak alt klasörlerinde okuma izni hatası olduğunda klasörü boş saymak yerine işlemi hata ile durdurup hedefteki yedekleri koruma.
-  - Hedefteki sembolik bağlantı (`symlink`) üzerinden hedef dışı dosyalara yazmayı engelleme (`lstat`, `O_NOFOLLOW`, `CLONE_NOFOLLOW`).
-  - Hardlink, symlink veya APFS büyük/küçük harf farkıyla aynı fiziksel dosyaya (`inode`) işaret eden yolların kaynağı 0 bayta düşürmesini engelleme.
-  - Güvenli silmede (`Shred`) sembolik bağlantıların hedef dosyayı bozmasını önleyip yalnızca bağlantının kendisini kaldırma.
-  - Önceden iptal edilmiş taşıma işlemlerinin yürütülmesini kesin olarak engelleme.
+- **Copy, Move, Mirror (Sync), Delete, and Compare:** File/folder copying, moving, mirror synchronization, secure deletion (`Fast Unlink`, `Zero-Fill`, `DoD 3-Pass`), and side-by-side folder/disk comparison.
+- **High-Performance POSIX Engine:** Multi-threaded parallel worker pool, APFS Copy-on-Write (`clonefile`) support on the same volume, Direct I/O (`F_NOCACHE`) for large files, and page-aligned transfer buffers.
+- **100% Byte-for-Byte Verification:** Verifies every byte of transferred files from start to finish (not just file size or header/tail blocks) with automatic repair on mismatch.
+- **Overwrite Policies:** `Overwrite`, `Ask me` (Windows-style per-file/batch conflict comparison dialog with a *Keep newer* option), and `Never`.
+- **Fast Directory Comparison (`getattrlistbulk`):** Parallel directory indexing powered by macOS `getattrlistbulk`, with clickable `same`, `time diff`, and `diff` filter badges.
+- **Queue, History, Favorites & Mini Notch HUD:** Sequential transfer queue, operation history, favorite folders, floating Mini HUD, Light/Dark themes, and English/Turkish UI.
+- **Data Integrity & Security Protections:**
+  - Blocks transfers/syncs when the destination is a parent or ancestor directory of the source.
+  - Propagates permission/read errors on unreadable source subdirectories instead of treating them as empty and deleting destination backups.
+  - Prevents symlink traversal or overwriting files outside the destination (`lstat`, `O_NOFOLLOW`, `CLONE_NOFOLLOW`).
+  - Guards against zero-byte truncation when two paths (hardlink, symlink, or case-insensitive APFS alias) point to the same physical inode.
+  - Protects symlink targets during secure delete (`Shred`) by unlinking only the symlink itself.
+  - Enforces pre-cancellation checks before executing moves or renames.
 
-## Gereksinimler
+## Requirements
 
-- macOS 13.0+ (Ventura veya üzeri)
+- macOS 13.0+ (Ventura or later)
 - Swift 5.9+ / Xcode Command Line Tools (`xcode-select --install`)
 
-## Kurulum ve Derleme
+## Build & Run
 
-Projeyi doğrudan kaynak koddan çalıştırmak için:
+Run directly from source:
 
 ```bash
 swift run
 ```
 
-Release sürümünü derlemek için:
+Build the release binary:
 
 ```bash
 swift build -c release
 ```
 
-`.app` paketi ve `.dmg` kurulum dosyası oluşturmak için (`dist/Sentor.app` ve `dist/Sentor.dmg`):
+Create an ad-hoc signed `.app` bundle and `.dmg` installer (`dist/Sentor.app` and `dist/Sentor.dmg`):
 
 ```bash
 ./scripts/build_dmg.sh
 ```
 
 > [!NOTE]
-> Ad-hoc imzalı hazır bir `.app` veya `.dmg` paketi indirildiğinde macOS Gatekeeper tanımsız geliştirici uyarısı verirse, uygulamayı `/Applications` klasörüne taşıdıktan sonra Terminal'de şu komutu çalıştırabilirsiniz:
+> If macOS Gatekeeper warns about an unidentified developer when opening a downloaded ad-hoc signed `.app` or `.dmg`, move `Sentor.app` to `/Applications` and run:
 > ```bash
 > xattr -cr /Applications/Sentor.app
 > ```
 
-## Lisans
+## License
 
-Bu proje [MIT Lisansı](LICENSE) ile lisanslanmıştır.
+This project is licensed under the [MIT License](LICENSE).
