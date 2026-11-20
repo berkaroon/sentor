@@ -14,7 +14,6 @@ Package.resolved
 xcuserdata/
 DerivedData/
 
-# Build & Release Artifacts
-dist/
-*.dmg
+# Build & App Bundles (keep dist/Sentor.dmg tracked for direct download)
+dist/*.app/
 *.app/

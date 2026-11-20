@@ -1,8 +1,38 @@
-# Sentor
+<p align="center">
+  <img src="Assets/sentor-icon-1024.png" width="140" alt="Sentor Logo" />
+</p>
 
-> This project is based on https://github.com/ProxySeer/FastCommander-Releases.
+<h1 align="center">Sentor</h1>
 
-**Sentor** is a clean, fast, data-integrity-focused macOS file transfer, mirror sync, and directory comparison utility built with SwiftUI and low-level POSIX/Darwin filesystem APIs for macOS 13 (Ventura) and later.
+<p align="center">
+  <strong>A fast, data-integrity-focused macOS file transfer, mirror sync, and directory comparison utility.</strong><br/>
+  Built with SwiftUI and low-level POSIX/Darwin filesystem APIs.<br/>
+  This project is based on <a href="https://github.com/ProxySeer/FastCommander-Releases">https://github.com/ProxySeer/FastCommander-Releases</a>.
+</p>
+
+<p align="center">
+  <a href="https://github.com/berkaroon/sentor/raw/main/dist/Sentor.dmg">
+    <img src="https://img.shields.io/badge/Download-Sentor.dmg-1B4332?style=for-the-badge&logo=apple&logoColor=white" alt="Download Sentor.dmg" />
+  </a>
+  <img src="https://img.shields.io/badge/macOS-13.0%2B-0A84FF?style=for-the-badge" alt="macOS 13.0+" />
+  <img src="https://img.shields.io/badge/Swift-5.9%2B-F05138?style=for-the-badge&logo=swift&logoColor=white" alt="Swift 5.9+" />
+  <a href="LICENSE">
+    <img src="https://img.shields.io/badge/License-MIT-34C759?style=for-the-badge" alt="MIT License" />
+  </a>
+</p>
+
+---
+
+## Download & Install
+
+- **Direct Download:** [**Sentor.dmg**](https://github.com/berkaroon/sentor/raw/main/dist/Sentor.dmg) (`3.4 MB`)
+- **SHA-256:** `63173019c2b191060ef48ad7f53e2d43ed19ab4e6d9b0f90fa11a0fadbf37c41`
+
+### Installation Steps
+1. Open **`Sentor.dmg`** and drag **Sentor.app** into your **Applications** folder.
+2. **First Launch (Gatekeeper):** Because Sentor is distributed independently with an ad-hoc signature rather than a paid Apple Developer ID certificate, macOS may show an *"unverified developer"* warning on first launch. Open **System Settings → Privacy & Security**, scroll down, and click **Open Anyway** (or run `xattr -cr /Applications/Sentor.app` in Terminal).
+
+---
 
 ## Features
 
@@ -44,12 +74,6 @@ Create an ad-hoc signed `.app` bundle and `.dmg` installer (`dist/Sentor.app` an
 ```bash
 ./scripts/build_dmg.sh
 ```
-
-> [!NOTE]
-> If macOS Gatekeeper warns about an unidentified developer when opening a downloaded ad-hoc signed `.app` or `.dmg`, move `Sentor.app` to `/Applications` and run:
-> ```bash
-> xattr -cr /Applications/Sentor.app
-> ```
 
 ## License
 
